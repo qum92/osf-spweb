@@ -6,17 +6,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.osf.web.service.AddrService;
+import com.osf.web.service.CustomerService;
 
 @Controller
-public class AddrController {
-	
+public class CustomerController {
 	@Autowired
-	private AddrService as;
+	private CustomerService cs;
 	
-	@RequestMapping(value="/addr/list",method=RequestMethod.GET)
-	public String goAddrlist(Model m) {
-		m.addAttribute("addrList", as.selectAddrList());
-		return "/addr/list";
+	@RequestMapping(value="/customer/list",method=RequestMethod.GET)
+	public String goCustoemrList(Model m) {
+		m.addAttribute("customerList", cs.selectCustomerList());
+		return "/customer/list";
 	}
+	
+
 }

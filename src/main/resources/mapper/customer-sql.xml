@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="customer">
+	<resultMap type="com.osf.web.vo.CustomerVO" id="ci">
+		<id property="ciNum" column="ci_num"/>
+		<result property="ciId" column="ci_id"/>
+		<result property="ciPwd" column="ci_pwd"/>
+		<result property="ciName" column="ci_name"/>
+		<result property="ciAge" column="ci_age"/>
+		<result property="ciEmail" column="ci_email"/>
+		<result property="ciZip" column="ci_zip"/>
+		<result property="ciAddr1" column="ci_addr1"/>
+		<result property="ciAddr2" column="ci_addr2"/>
+		<result property="ciPhone" column="ci_phone"/>
+	</resultMap>
+	<select id="selectCustomerList" resultMap="ci">
+		select * from customer_info
+	</select>
+	<select id="selectCustomerByCinum" resultMap="ci">
+		select * from customer_info
+	<where>
+		<if test="ciNum!=null">
+			ci_num &lt;= #{ciNum}
+		</if>
+	</where>
+	</select>
+	<insert id="insertCustomer">
+		insert into customer_info(ci_num, ci_id, ci_pwd, ci_name, ci_age, ci_email, ci_zip, ci_addr1, ci_addr2, ci_phone)
+		values(seq_ci_num.nextval,#{ciId},#{ciPwd},#{ciName},#{ciAge},#{ciEmail},#{ciZid},#{ciAddr1},#{ciAddr2},#{ciPhone})
+	</insert>
+	<update id="updateCustomer">
+	update customer_info set ci_id=?,ci_pwd=?,ci_name=?,ci_age=?,ci_email=?,ci_zip=?,ci_addr1=?,ci_addr2=?,ci_phone=?
+		<set>
+		<if test="ci_id!=null">
+			ci_id &lt;= #{ciId}
+		</if>
+		<if test="ci_pwd!=null">
+			ci_pwd &lt;= #{ciPwd}
+		</if>
+		<if test="ci_name!=null">
+			ci_name &lt;= #{ciName}
+		</if>
+		<if test="ci_age!=null">
+			ci_age &lt;= #{ciAge}
+		</if>
+		<if test="ci_email!=null">
+			ci_email &lt;= #{ciEmail}
+		</if>
+		<if test="ci_zip!=null">
+			ci_zid &lt;= #{ciZid}
+		</if>
+		<if test="ci_addr1!=null">
+			ci_addr1 &lt;= #{ciAddr1}
+		</if>
+		<if test="ci_addr2!=null">
+			ci_addr2 &lt;= #{ciAddr2}
+		</if>
+		<if test="ci_phone!=null">
+			ci_phone &lt;= #{ciPhone}
+		</if>
+		</set>
+		<where>
+		<if test="ciNum!=null">
+			ci_num &lt;= #{ciNum}
+		</if>
+		</where>
+	</update>
+	<delete id="deleteCustomer">
+		delete customer_info
+		<where>
+		<if test="ciNum!=null">
+			ci_num &lt;= #{ciNum}
+		</if>
+		</where>
+	</delete>
+</mapper>

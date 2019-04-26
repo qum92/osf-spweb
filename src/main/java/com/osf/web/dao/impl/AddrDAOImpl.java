@@ -15,10 +15,9 @@ import com.osf.web.dao.AddrDAO;
 public class AddrDAOImpl implements AddrDAO {
 
 	@Autowired
-	private SqlSessionFactory ssf;
+	private SqlSession ss;
 
 	public List<Map<String, String>> selectAddrList() {
-		SqlSession ss = ssf.openSession();
 		Map<String,String> param = new HashMap();
 		param.put("adNum", "20");
 		param.put("adSido", "부산광역시");

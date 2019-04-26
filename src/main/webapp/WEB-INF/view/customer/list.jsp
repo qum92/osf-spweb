@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-${addrList}
-<a href="/uri/addr/test">가즈아!</a>
+${customerList}
 </body>
 </html>
