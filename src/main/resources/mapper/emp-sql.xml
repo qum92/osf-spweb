@@ -6,12 +6,12 @@
 	<select id="selectEmpById" resultType="map">
 		select * from emp where id=#{id}
 	</select>
-	<select id="selectEmpList" resultType="map">
+	<select id="selectEmpList2" resultType="com.osf.web.vo.EmpVO">
 		select * from emp
 		<where>
 			<if test="lvl!=null">
 				and lvl=#{lvl}
 			</if>
-		</where>		
+		</where>
 	</select>
 </mapper>

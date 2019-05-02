@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,13 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>사원 등록화면</title>
+    <title>로그인 화면</title>
     <!-- Bootstrap core CSS -->
     <link href="/resources/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="/resources/signin.css" rel="stylesheet">
   </head>
+ 
 <script> 
 		window.addEventListener('load',function(){
 		document.querySelector('#signinBtn').onclick = function(){
@@ -51,18 +53,24 @@
   <body class="text-center">
     <form class="form-signin" action="/emp/login" method="POST">
       <img class="mb-4" src="/resources/bootstrap-solid.svg" alt="" width="72" height="72">
-          <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-      <label for="inputEmail" class="sr-only">Email address</label>
-      <input type="text" id="id" class="form-control" placeholder="ID" required autofocus name="id">
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="pwd" class="form-control" placeholder="Password" required name="pwd">
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-      </div>
-      <button class="btn btn-lg btn-primary btn-block" type="button" id="signinBtn">Sign in</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>
+      <input type="text" id="id" class="form-control" placeholder="아이디" name="id">
+      <input type="password" id="password" class="form-control" placeholder="비밀번호" name="pwd">
+      <input type="text" id="name" class="form-control" placeholder="이름" name="name">
+      <input type="text" id="job" class="form-control" placeholder="직책" name="job">
+      <input type="text" id="mgr" class="form-control" placeholder="사원번호" name="mgr">
+      <input type="date" id="hireddate" class="form-control" placeholder="입사날짜" name="hireddate">
+      <input type="text" id="sal" class="form-control" placeholder="급여" name="sal">
+      <input type="text" id="comm" class="form-control" placeholder="보너스" name="comm">
+      <input type="text" id="lvl" class="form-control" placeholder="권한" name="level">
+      <input type="text" id="deptno" class="form-control" placeholder="부서" name="deptno">
+      <select name="DeptNo">
+      <option value="null" selected>선택해주세요</option>
+      <c:forEach items="${deptList}" var="d">
+      <option value="${d.DEPTNO}">${d.DNAME}</option>
+      </c:forEach>
+      </select>
+      <br>
+      <button>사원등록</button>
     </form>
   </body>
 </html>
